@@ -43,11 +43,13 @@ a{
     margin-right: auto;
 }
 
+
 .site-footer{
     background-color: var(--main);
     color: var(--contrast);
     padding: 40px 0 20px 0;
-    margin-top: 40px;
+    margin-top: 117px;
+    margin-bottom: -14px;
     width: 100%;
     text-align: center;
     border-top-left-radius: 20px;
