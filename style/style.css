@@ -1,0 +1,221 @@
+:root{
+    --main : #683369;
+    --bg : #080018;
+    --secondary : #522083;
+    --accent : #eab7b3;
+    --contrast : #ebcdaf;
+    --font : #b9796d;
+}
+
+
+body{
+    max-width: 735px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+      font-family: monospace, sans-serif;
+      background-color: var(--bg);
+    color: var(--font);
+}
+
+a{
+    color: var(--contrast);
+    background-color: var(--main);
+    font-size: 1.2em;
+    width: 200px;
+    text-decoration: none;
+}
+
+.select button{
+    color: var(--contrast);
+    background-color: var(--main);
+    font-size: 1.2em;
+    width: 90px;
+    margin-top: 25%;
+    border-radius: 20px;
+      font-family: monospace, sans-serif;
+
+}
+
+.contain{
+    max-width: 410px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.site-footer{
+    background-color: var(--main);
+    color: var(--contrast);
+    padding: 40px 0 20px 0;
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.site-footer h2 {
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+.site-footer a {
+    color: var(--contrast);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.site-footer a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.text-justify{
+    font-size: large;
+}
+
+.banner{
+    max-width: 100%;
+            margin-left: auto;
+    margin-right: auto;
+}
+
+.next{
+    color: var(--contrast);
+    background-color: var(--main);
+    font-size: 1.2em;
+    width: 90px;
+    margin-top: 5%;
+    border-radius: 20px;
+    display: block;
+                margin-left: auto;
+    margin-right: auto;
+      font-family: monospace, sans-serif;
+}
+
+.btns{
+    color: var(--contrast);
+    background-color: var(--main);
+    font-size: 1.2em;
+    width: 500px;
+    margin-top: 5%;
+    border-radius: 20px;
+    display: block;
+                margin-left: auto;
+    margin-right: auto;
+      font-family: monospace, sans-serif;
+}
+.btn {
+    color: var(--contrast);
+    background-color: var(--main);
+    font-size: 1.2em;
+    width: 90px;
+    margin-top: 5%;
+    border-radius: 20px;
+        margin-left: auto;
+    margin-right: auto;
+    display: block;
+      font-family: monospace, sans-serif;
+}
+
+.alignment{
+    max-width: 735px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alignment button{
+    display: block;
+    max-width: 90px;
+        margin-left: auto;
+    margin-right: auto;
+      font-family: monospace, sans-serif;
+}
+
+.message{
+    display: block;
+    max-width: 500px;
+            margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.demo{
+    height: 200px;
+    width: 200px;
+    border: 5px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -15%;
+    border-radius: 50%;
+background: conic-gradient(
+        hsl(0, 100%, 50%),
+        hsl(60, 100%, 50%),
+        hsl(120, 100%, 50%),
+        hsl(180, 100%, 50%),
+        hsl(240, 100%, 50%),
+        hsl(300, 100%, 50%),
+        hsl(360, 100%, 50%)
+    );
+    cursor: pointer;
+    position: relative;  /* Add this line */
+}
+
+.color-indicator {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+.submit-btn{
+        color: var(--contrast);
+    background-color: var(--main);
+    font-size: 1em;
+    width: 90px;
+    margin-top: 5%;
+    border-radius: 20px;
+        margin-left: auto;
+    margin-right: auto;
+    display: block;
+      font-family: monospace, sans-serif;
+}
+
+.footer-social a {
+    color: var(--contrast);
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: color 0.2s;
+}
+.footer-social a:hover {
+    color: var(--accent);
+}
+
+.site-footer .containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.site-footer .row {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+}
+.site-footer .col-sm-12,
+.site-footer .col-md-6 {
+    flex: 1 1 200px;
+    min-width: 200px;
+}
