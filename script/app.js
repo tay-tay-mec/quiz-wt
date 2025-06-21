@@ -3,12 +3,13 @@ const main = document.querySelector('.container');
 const message = pageEles(main, 'div', 'Press Start Button', 'message');
 const output = pageEles(main, 'div', '', 'game');
 const game = { score: 0 };
+let maxScore = 0;
 
 // Get the quiz type from the page
 const currentPage = window.location.pathname;
 const quizType = currentPage.includes('html-quiz') ? 'HTML' :
-                 currentPage.includes('css-quiz') ? 'CSS' :
-                 currentPage.includes('js-quiz') ? 'JS' : 'all';
+                currentPage.includes('css-quiz') ? 'CSS' :
+                currentPage.includes('js-quiz') ? 'JS' : 'all';
 
 const url = '../script/quiz.json';
 
@@ -18,7 +19,7 @@ function pageEles(parent, t, html, c) {
     const ele = document.createElement(t);
     ele.innerHTML = html;
     ele.classList.add(c);
-    return parent.appendChild(ele);
+   return parent.appendChild(ele);
 }
 
 function loadData() {
@@ -26,11 +27,11 @@ function loadData() {
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            // Use all questions if quizType is 'all', otherwise filter
+
             const filteredQuestions = quizType === 'all' ? data : 
                 data.filter(question => question.category === quizType);
             
-            console.log('Filtered Questions:', filteredQuestions.length); // Debug log
+            console.log('Filtered Questions:', filteredQuestions.length); 
 
             const temp = {
                 total: filteredQuestions.length,
@@ -42,12 +43,60 @@ function loadData() {
         .catch(error => console.error('Error loading questions:', error));
     }
 
+function calcGrade(maxScore, score) {
+    console.log('calcGrade called', maxScore, score); // DEBUG
+    if (quizType === 'all') {
+        maxScore = 50;
+    } else if (quizType === 'HTML') {
+        maxScore = 15;
+    } else if (quizType === 'CSS') {
+        maxScore = 15;
+    } else if (quizType === 'JS') {
+        maxScore = 20;
+    }
+
+    let grade = '';
+    const percentage = (score / maxScore) * 100;
+    if (percentage >= 95) grade = '15';
+    else if (percentage >= 90) grade = '14';
+    else if (percentage >= 85) grade = '13';
+    else if (percentage >= 80) grade = '12';
+    else if (percentage >= 75) grade = '11';
+    else if (percentage >= 70) grade = '10'; 
+    else if (percentage >= 65) grade = '9';
+    else if (percentage >= 60) grade = '8';
+    else if (percentage >= 55) grade = '7';
+    else if (percentage >= 50) grade = '6';
+    else if (percentage >= 45) grade = '5';
+    else if (percentage >= 40) grade = '4';
+    else if (percentage >= 33) grade = '3';
+    else if (percentage >= 27) grade = '2';
+    else if (percentage >= 20) grade = '1';
+    else grade = '0';
+    console.log('About to set message.innerHTML', message, grade); // DEBUG
+    message.innerHTML = `
+        <h1>Game Over</h1>
+        <div>Du hast ${score} von ${maxScore} Punkten erreicht.</div>
+        <div>Punkte: <strong>${grade}</strong></div>
+    `;
+}
+
 function createQuestion(data){
     const el = pageEles(output, 'div', '', ); 
 
-    
+    if (quizType === 'all') {
+        maxScore = 50;
+    } else if (quizType === 'HTML') {
+        maxScore = 15;
+    } else if (quizType === 'CSS') {
+        maxScore = 15;
+    } else if (quizType === 'JS') {
+        maxScore = 20;
+    }
+
     if(data.q.length == 0){
-        message.innerHTML = `<h1>Game Over</h1> <div> You scored ${game.score} out of ${data.total} questions.`;
+        console.log('Quiz ended, calling calcGrade'); // DEBUG
+        calcGrade(maxScore, game.score);
     } else{
             const tBtn = pageEles(el, 'button', 'Next', 'next');
     tBtn.onclick = () => {
@@ -87,14 +136,13 @@ function outputQuestion(question, parent, tBtn) {
         }
     });
 
-    // Add a submit button
     const submitBtn = pageEles(parent, 'button', 'Submit Answers', 'submit-btn');
     submitBtn.onclick = () => {
         if (!answered) {
             answered = true;
             const isCorrect = checkAnswers(selectedAnswers, question.answers);
             
-            // Show which answers were correct/incorrect
+
             const buttons = parent.querySelectorAll('.btns');
             buttons.forEach(el => {
                 el.disabled = true;
@@ -119,5 +167,6 @@ function outputQuestion(question, parent, tBtn) {
 
 function checkAnswers(selected, correct) {
     if (selected.size !== correct.length) return false;
-    return correct.every(answer => selected.has(answer));
+   return  correct.every(answer => selected.has(answer));
 }
+
