@@ -106,7 +106,7 @@ function createQuestion(data){
         const question = data.q.shift();
             data.counter++;
                 message.textContent = `Question ${data.counter} of ${data.total}`;
-                if(data.q.length == 0) tBtn.textContent = 'End Game'
+                if(data.q.length == 0) tBtn.textContent = 'Beende das Spiel'
                 tBtn.style.display = 'none';
         outputQuestion(question, el, tBtn);
     }
