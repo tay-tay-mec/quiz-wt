@@ -76,8 +76,8 @@ function calcGrade(maxScore, score) {
     console.log('About to set message.innerHTML', message, grade); // DEBUG
     message.innerHTML = `
         <h1>Game Over</h1>
-        <div>Du hast ${score} von ${maxScore} Punkten erreicht.</div>
-        <div>Punkte: <strong>${grade}</strong></div>
+        <div>Du hast ${score} von ${maxScore} insgesamt Punkten erreicht.</div>
+        <div>Notenpunkte:<strong>${grade}</strong></div>
     `;
 }
 
